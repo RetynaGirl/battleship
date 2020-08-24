@@ -25,6 +25,10 @@ Use this template when conducting DTR with your project partners. *It's recommen
   Kevin - I like to work alone and in a team environment. Not in an environment where I can easily be destracted.  
   
 * What are each of our strengths? How can our strengths complement each other?
+
+  Aidan- Good at coding, thinking around problems
+  
+  Kevin - 
 * What’s gone well or poorly in your previous projects?
 * How will we set direction and make decisions as a team?
 * How will we overcome obstacles?
