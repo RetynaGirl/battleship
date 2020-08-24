@@ -22,6 +22,8 @@ Use this template when conducting DTR with your project partners. *It's recommen
 
   Aidan- I like to work with people, but I can do pretty well on my own.  Distractions outside of work, however, definitely disrupt my workflow.
   
+  Kevin - I like to work alone and in a team environment. Not in an environment where I can easily be destracted.  
+  
 * What are each of our strengths? How can our strengths complement each other?
 * What’s gone well or poorly in your previous projects?
 * How will we set direction and make decisions as a team?
