@@ -28,7 +28,8 @@ Use this template when conducting DTR with your project partners. *It's recommen
 
   Aidan- Good at coding, thinking around problems
   
-  Kevin - 
+  Kevin - Work ethic and problem solver.
+  
 * What’s gone well or poorly in your previous projects?
 * How will we set direction and make decisions as a team?
 * How will we overcome obstacles?
