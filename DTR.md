@@ -57,59 +57,59 @@ Use this template when conducting DTR with your project partners. *It's recommen
 * What is your style for giving feedback? Does anything ever hold you back from giving feedback?
   
   Aidan - guided discovery. When the other person has had a bad day.
+  
   Kevin - positive feedfoward. No, nothing hold me back.
   
 * What do you identify as being your biggest strength(s) technically, as they relate to this project? Where do you feel you could use improvement in your technical skills, as they relate to this project? How can our team help support you in improving these skills?
 
-Kevin - Syntax and testing. I can improve in my logic in certain situations. Giving feedback can improve these skillls.
+  Kevin - Syntax and testing. I can improve in my logic in certain situations. Giving feedback can improve these skillls.
 
-
+  Aidan - I am strong with logical operations and scope, and I could use improvement with knowledge of included ruby methods.  Support will happen as we go along in the class syllabus, so I am not concerned with that.
 
 * What tools do you want to use to manage the project?
+  * Git/Github
+  * VS Code Live Share for remote collaboration
 * How do you want the group to solve problems when members run into issues with features of the project?
+  
+  If we cannot solve it ourselves, we will go on Slack then to mentors for help.
+  
 * How do you know if a project is successful? How can we achieve that as a group?
+
+  We will know if the project is successful if we get through at least Iteration 3 and the accompanying rubric requirements.
+  
 * How will we recognize each other's successes and celebrate them?
+
+  We will send each other a picture of our pets when we finish something we feel good about.
 
 Any additional questions that you would like to add:
 
 ### Remote Work Considerations During the COVID-19 Quarantine
 * What does remote focus look like for you? (headphones, distractions minimized (tv, family stuff, etc), video on)
+
+  Headphones on, phone on silent, no unnecessary interruptions by other people, video on for accountability
+
 * When working from the same place where you live, life can get in the way. What are some potential life things that could affect your ability to focus, and what plan can we come up with to approach those moments? 
+
+  Neither of us have had significant distractions so far, but when one occurs, we will do our best to address it.
+
 * If we encounter issues such as power outages, Zoom difficulties, or bad wifi, what backup plans can we have in place? (This could have answers like  asking a neighbor to borrow wifi, using cellphone hotspot for internet, switching to slack or skype. 
+
+  We are not anticipating anything going wrong, but if it does, we can slack each other to figure something out.
+
 * Pomodoro breaks are especially important for remote work and doubly so for quarantine. What should our Pom cadence look like? How will hold ourselves accountable?
+
+  52 mins on, 8 off for longer work sequences, using marinaratimer.com/AHKeZ
+
 * Quarantine is tough, so it’s important to make note of our mental/emotional state when working with others. How can we make space to check in on each other’s well being, in addition to the work that needs to be done?
 
-### Template for DTR Memo
-
-Project: 
-
-Group Member Names:
-
-Goals and Expectations for the Project (What does each group member hope to get out of this project? What do we want to achieve as a team? How will we know that we're successful?):
-	
-Team strengths & collaboration styles (consider discussing your Pairin qualities here):
-
-How we can use our strengths to overcome obstacles:
-
-Schedule Expectations (When are we available to work together and individually? What constraints do we have? Make sure to discuss the remote questions above in regards to this section):
-
-Communication Expectations (How and often will we communicate? How do we keep lines of communication open? How will we make decisions as a team? How will we communicate about our emotional and mental well-being with each other?):
-
-Abilities & Growth Expectations (Technical strengths and areas for desired improvement):
-
-Workload Expectations (What features do we each want to work on?):
-
-Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests/Debugging and Problem-solving Techniques): 
-
-Pomodoro Break Schedule:
-
-Expectations for giving and receiving feedback:
-
-Additional Remote Considerations:
-
-Project management tools we will use (GitHub projects or Trello are popular tools):
+  At the beginning of every work session, we will check in and see how we are doing.
 
 Day 1 Agenda: 
+
+  * do DTR
+  * Define project and outline, more than once
+  * Set up repo
+  * Scheduling
 
 Additional Notes:
 
