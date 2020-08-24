@@ -5,7 +5,13 @@ Use this template when conducting DTR with your project partners. *It's recommen
 ### Guiding Questions to Define The Relationship:
 
 * What are each of our learning goals for this project? What drives us in this project?
+  Utilize Test Driven Development
+  Practice Algorithmic Thinking
+  Create an Object Oriented solution to a problem without being given full specifications
+  Work in a pair
+  Use Pull Requests to collaborate with a partner
 * What is your collaboration style? How do you feel about pair programming vs. divide-and-conquer approaches?
+  We feel that we should use pair programming because it allows us to collaborate and learn more from each other.
 * How do you communicate best? How do you appreciate receiving communication from others?
 * How would you describe your work style?
 * What are each of our strengths? How can our strengths complement each other?
