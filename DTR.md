@@ -30,11 +30,30 @@ Use this template when conducting DTR with your project partners. *It's recommen
   
   Kevin - Work ethic and problem solver.
   
+  Our strengths compliment each other by combining good work ethic and coding fluency to make a smooth workflow that operates in a timely manner.
+  
 * What’s gone well or poorly in your previous projects?
+
+  Well- Done in a timely manner, good coding practices, completed for both
+  
+  Poorly- made large/complex methods, overworking/perfectionism
+  
 * How will we set direction and make decisions as a team?
+  
+  Discussion with reasoning, collaboration
+  
 * How will we overcome obstacles?
+
+  Discuss and/or compromise for a good solution
+  
 * What do you need (resources, environment, communication) to do your best work?
+
+  Good environment, scheduling, communication
+  
 * What scheduling restraints do you have? What are your scheduling preferences?
+  
+  Finish before 12 AM EDT for Kevin to go to bed
+  
 * What is your style for giving feedback? Does anything ever hold you back from giving feedback?
 * What do you identify as being your biggest strength(s) technically, as they relate to this project? Where do you feel you could use improvement in your technical skills, as they relate to this project? How can our team help support you in improving these skills?
 * What tools do you want to use to manage the project?
