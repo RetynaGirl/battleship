@@ -13,10 +13,13 @@ Use this template when conducting DTR with your project partners. *It's recommen
 * What is your collaboration style? How do you feel about pair programming vs. divide-and-conquer approaches?
   
   We feel that we should use pair programming because it allows us to collaborate and learn more from each other.
+  
 * How do you communicate best? How do you appreciate receiving communication from others?
+
   Zoom and slack will work just fine.
   
 * How would you describe your work style?
+
   Aidan- I like to work with people, but I can do pretty well on my own.  Distractions outside of work, however, definitely disrupt my workflow.
   
 * What are each of our strengths? How can our strengths complement each other?
