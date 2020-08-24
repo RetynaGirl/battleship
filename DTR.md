@@ -55,7 +55,16 @@ Use this template when conducting DTR with your project partners. *It's recommen
   Finish before 12 AM EDT for Kevin to go to bed
   
 * What is your style for giving feedback? Does anything ever hold you back from giving feedback?
+  
+  Aidan - guided discovery. When the other person has had a bad day.
+  Kevin - positive feedfoward. No, nothing hold me back.
+  
 * What do you identify as being your biggest strength(s) technically, as they relate to this project? Where do you feel you could use improvement in your technical skills, as they relate to this project? How can our team help support you in improving these skills?
+
+Kevin - Syntax and testing. I can improve in my logic in certain situations. Giving feedback can improve these skillls.
+
+
+
 * What tools do you want to use to manage the project?
 * How do you want the group to solve problems when members run into issues with features of the project?
 * How do you know if a project is successful? How can we achieve that as a group?
