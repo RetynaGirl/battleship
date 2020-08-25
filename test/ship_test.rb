@@ -12,10 +12,16 @@ class ShipTest < Minitest::Test
   end
 
   def test_attributes_exist
-    ship = Ship.new('Cruiser', 3) 
+    ship = Ship.new('Cruiser', 3)
 
     assert_equal "Cruiser", ship.name
     assert_equal 3, ship.length
     assert_equal 3, ship.health
+  end
+
+  def test_is_sunk
+    ship = Ship.new('Cruiser', 3)
+
+    assert_equal false, ship.sunk?
   end
 end
