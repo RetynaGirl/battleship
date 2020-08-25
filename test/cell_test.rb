@@ -16,6 +16,12 @@ class CellTest < Minitest::Test
     cell = Cell.new('B4')
 
     assert_equal 'B4', cell.coordinate
-    assert_equal nil, cell.ship
+    assert_nil cell.ship
+  end
+
+  def test_it_returns_empty?
+    cell = Cell.new('B4')
+
+    assert cell.empty?
   end
 end
