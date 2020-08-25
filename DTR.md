@@ -98,7 +98,7 @@ Any additional questions that you would like to add:
 
 * Pomodoro breaks are especially important for remote work and doubly so for quarantine. What should our Pom cadence look like? How will hold ourselves accountable?
 
-  52 mins on, 8 off for longer work sequences, using marinaratimer.com/AHKeZ
+  52 mins on, 8 off for longer work sequences, using https://www.marinaratimer.com/nyMr2P2
 
 * Quarantine is tough, so it’s important to make note of our mental/emotional state when working with others. How can we make space to check in on each other’s well being, in addition to the work that needs to be done?
 
