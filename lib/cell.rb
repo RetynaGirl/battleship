@@ -10,4 +10,8 @@ class Cell
     @coordinate = coordinate
     @ship = nil
   end
+
+  def empty?
+    return @ship.nil?
+  end
 end
