@@ -24,4 +24,13 @@ class CellTest < Minitest::Test
 
     assert cell.empty?
   end
+
+  def test_can_place_ship
+    cell = Cell.new('B4')
+    ship = Ship.new('Cruiser', 3)
+
+    cell.place_ship(ship)
+
+    assert_equal ship, cell.ship
+  end
 end
