@@ -10,4 +10,10 @@ class BoardTest < Minitest::Test
 
     assert_instance_of Board, board
   end
+
+  def test_cells
+    board = Board.new
+
+    assert_equal 16, board.cells.length
+  end
 end
