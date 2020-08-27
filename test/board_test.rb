@@ -47,6 +47,23 @@ class BoardTest < Minitest::Test
     assert board.valid_placement?(cruiser, %w[B1 C1 D1])
   end
 
+  def test_it_validates_direction
+    board = Board.new
+
+    assert_equal false, board.validate_direction(%w[A1 A2 B2], :horizontal)
+    assert_equal false, board.validate_direction(%w[A1 B1 B2], :vertical)
+    assert_equal true, board.validate_direction(%w[A1 A2 A3], :horizontal)
+    assert_equal true, board.validate_direction(%w[A1 B1 C1], :vertical)
+  end
+
+  def test_it_returns_direction
+    board = Board.new
+
+    assert_equal :horizontal, board.determine_direction(%w[A1 A2 A3])
+    assert_equal :vertical, board.determine_direction(%w[A1 B1 C1])
+    assert_equal false, board.determine_direction(%w[A1 B2 C3])
+  end
+
   def test_coordinate_valid
     board = Board.new
 
@@ -115,5 +132,15 @@ class BoardTest < Minitest::Test
     expected4 = "  1 2 3 4 \nA H S S . \nB . . . M \nC X . . . \nD X . . . \n"
 
     assert_equal expected4, board.render(true)
+  end
+
+  def test_ship_overlaps?
+    board = Board.new
+    cruiser = Ship.new('Cruiser', 3)
+
+    board.place(cruiser, %w[A1 A2 A3])
+
+    assert_equal false, board.ship_overlaps?(%w[B1 B2])
+    assert_equal true, board.ship_overlaps?(%w[A1 B1])
   end
 end

@@ -34,30 +34,41 @@ class Board
     return false unless ship.length == coordinates.length
 
     if ship.length > 1
+      direction = determine_direction(coordinates)
+      return false if direction == false
 
-      first_coords = coordinates[0].split('')
-      second_coords = coordinates[1].split('')
+      return validate_direction(coordinates, direction)
+    end
+    true
+  end
 
-      if first_coords[0] == second_coords[0] && first_coords[1] != second_coords[1]
-        direction = :horizontal
-      elsif first_coords[0] != second_coords[0] && first_coords[1] == second_coords[1]
-        direction = :vertical
-      else
-        return false
-      end
+  def validate_direction(coordinates, direction)
+    first_coords = coordinates[0].split('')
 
-      coordinates.each_with_index do |coords, idx|
-        split_coords = coords.split('')
+    coordinates.each_with_index do |coords, idx|
+      split_coords = coords.split('')
 
-        case direction
-        when :vertical
-          return false unless first_coords[0].ord + idx == split_coords[0].ord && first_coords[1] == split_coords[1]
-        when :horizontal
-          return false unless first_coords[1].to_i + idx == split_coords[1].to_i && first_coords[0] == split_coords[0]
-        end
+      case direction
+      when :vertical
+        return false unless first_coords[0].ord + idx == split_coords[0].ord && first_coords[1] == split_coords[1]
+      when :horizontal
+        return false unless first_coords[1].to_i + idx == split_coords[1].to_i && first_coords[0] == split_coords[0]
       end
     end
     true
+  end
+
+  def determine_direction(coordinates)
+    first_coords = coordinates[0].split('')
+    second_coords = coordinates[1].split('')
+
+    if first_coords[0] == second_coords[0] && first_coords[1] != second_coords[1]
+      :horizontal
+    elsif first_coords[0] != second_coords[0] && first_coords[1] == second_coords[1]
+      :vertical
+    else
+      false
+    end
   end
 
   def valid_coordinate?(coordinate)
