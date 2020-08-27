@@ -26,15 +26,39 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
+    # return false if ship_overlaps?(coordinates)
+    # coordinates.each do |coord|
+    #   return false unless valid_coordinate?(coord)
+    # end
+
     return false unless ship.length == coordinates.length
 
-    first_coords = coordinates[0].split('')
+    if ship.length > 1
 
-    coordinates.each_with_index do |coords, idx|
-      split_coords = coords.split('')
-      unless first_coords[0].ord + idx == split_coords[0].ord || first_coords[1].to_i + idx == split_coords[1].to_i
+      first_coords = coordinates[0].split('')
+      second_coords = coordinates[1].split('')
+
+      if first_coords[0] == second_coords[0] && !(first_coords[1] == second_coords[1])
+        direction = :horizontal
+      elsif !(first_coords[0] == second_coords[0]) && first_coords[1] == second_coords[1]
+        direction = :vertical
+      else
         return false
       end
+
+      coordinates.each_with_index do |coords, idx|
+        split_coords = coords.split('')
+
+        case direction
+        when :vertical
+          return false unless first_coords[0].ord + idx == split_coords[0].ord && first_coords[1] == split_coords[1]
+        when :horizontal
+          return false unless first_coords[1].to_i + idx == split_coords[1].to_i && first_coords[0] == split_coords[0]
+        end
+      end
+      true
+    else
+      true
     end
   end
 end
