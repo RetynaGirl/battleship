@@ -22,4 +22,13 @@ class BoardTest < Minitest::Test
       assert_instance_of Cell, cell
     end
   end
+
+  def test_validate_ships
+    board = Board.new
+    cruiser = Ship.new('Cruiser', 3)
+    submarine = Ship.new('Submarine', 2)
+
+    assert_equal false, board.valid_placement?(cruiser, %w[A1 A2])
+    assert_equal false, board.valid_placement?(submarine, %w[A1 A2 A3])
+  end
 end
