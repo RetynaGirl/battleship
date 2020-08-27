@@ -26,10 +26,10 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
-    # return false if ship_overlaps?(coordinates)
     coordinates.each do |coord|
       return false unless valid_coordinate?(coord)
     end
+    return false if ship_overlaps?(coordinates)
 
     return false unless ship.length == coordinates.length
 
@@ -68,5 +68,13 @@ class Board
     return unless valid_placement?(ship, coordinates)
 
     coordinates.each { |coord| @cells[coord].place_ship(ship) }
+  end
+
+  def ship_overlaps?(coordinates)
+    coordinates.each do |coord|
+      return true unless @cells[coord].empty?
+    end
+
+    false
   end
 end
