@@ -80,4 +80,40 @@ class BoardTest < Minitest::Test
 
     assert_equal false, board.valid_placement?(submarine, %w[A1 B1])
   end
+
+  def test_board_renders
+    board = Board.new
+    cruiser = Ship.new('Cruiser', 3)
+
+    board.place(cruiser, %w[A1 A2 A3])
+
+    expected1 = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
+    expected2 = "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n"
+
+    # No ships
+    assert_equal expected1, board.render
+
+    # Show ships
+    assert_equal expected2, board.render(true)
+
+    # Hits and Misses
+    board.cells['B4'].fire_upon
+    board.cells['A1'].fire_upon
+
+    expected3 = "  1 2 3 4 \nA H . . . \nB . . . M \nC . . . . \nD . . . . \n"
+
+    assert_equal expected3, board.render
+
+    # Sunk ship and show ship
+    submarine = Ship.new('Submarine', 2)
+
+    board.place(submarine, %w[C1 D1])
+
+    board.cells['C1'].fire_upon
+    board.cells['D1'].fire_upon
+
+    expected4 = "  1 2 3 4 \nA H S S . \nB . . . M \nC X . . . \nD X . . . \n"
+
+    assert_equal expected4, board.render(true)
+  end
 end

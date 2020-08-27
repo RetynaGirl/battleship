@@ -77,4 +77,27 @@ class Board
 
     false
   end
+
+  def render(show_ships = false)
+    letters = (65..(@board_size + 64)).map(&:chr)
+    numbers = (1..@board_size)
+
+    out_string = '  '
+
+    numbers.each do |num|
+      out_string += "#{num} "
+    end
+    out_string += "\n"
+
+    letters.each do |letter|
+      out_string += letter
+
+      numbers.each do |num|
+        out_string += " #{@cells[letter + num.to_s].render(show_ships)}"
+      end
+
+      out_string += " \n"
+    end
+    out_string
+  end
 end
