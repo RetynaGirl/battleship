@@ -34,9 +34,10 @@ class Board
     return false unless ship.length == coordinates.length
 
     if ship.length > 1
-
       direction = determine_direction(coordinates)
       return false if direction == false
+
+      first_coords = coordinates[0].split('')
 
       coordinates.each_with_index do |coords, idx|
         split_coords = coords.split('')
