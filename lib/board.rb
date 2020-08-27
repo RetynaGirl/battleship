@@ -37,17 +37,22 @@ class Board
       direction = determine_direction(coordinates)
       return false if direction == false
 
-      first_coords = coordinates[0].split('')
+      return validate_direction(coordinates, direction)
+    end
+    true
+  end
 
-      coordinates.each_with_index do |coords, idx|
-        split_coords = coords.split('')
+  def validate_direction(coordinates, direction)
+    first_coords = coordinates[0].split('')
 
-        case direction
-        when :vertical
-          return false unless first_coords[0].ord + idx == split_coords[0].ord && first_coords[1] == split_coords[1]
-        when :horizontal
-          return false unless first_coords[1].to_i + idx == split_coords[1].to_i && first_coords[0] == split_coords[0]
-        end
+    coordinates.each_with_index do |coords, idx|
+      split_coords = coords.split('')
+
+      case direction
+      when :vertical
+        return false unless first_coords[0].ord + idx == split_coords[0].ord && first_coords[1] == split_coords[1]
+      when :horizontal
+        return false unless first_coords[1].to_i + idx == split_coords[1].to_i && first_coords[0] == split_coords[0]
       end
     end
     true
