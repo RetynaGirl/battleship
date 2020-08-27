@@ -35,16 +35,8 @@ class Board
 
     if ship.length > 1
 
-      first_coords = coordinates[0].split('')
-      second_coords = coordinates[1].split('')
-
-      if first_coords[0] == second_coords[0] && first_coords[1] != second_coords[1]
-        direction = :horizontal
-      elsif first_coords[0] != second_coords[0] && first_coords[1] == second_coords[1]
-        direction = :vertical
-      else
-        return false
-      end
+      direction = determine_direction(coordinates)
+      return false if direction == false
 
       coordinates.each_with_index do |coords, idx|
         split_coords = coords.split('')
@@ -58,6 +50,19 @@ class Board
       end
     end
     true
+  end
+
+  def determine_direction(coordinates)
+    first_coords = coordinates[0].split('')
+    second_coords = coordinates[1].split('')
+
+    if first_coords[0] == second_coords[0] && first_coords[1] != second_coords[1]
+      :horizontal
+    elsif first_coords[0] != second_coords[0] && first_coords[1] == second_coords[1]
+      :vertical
+    else
+      false
+    end
   end
 
   def valid_coordinate?(coordinate)
