@@ -116,4 +116,14 @@ class BoardTest < Minitest::Test
 
     assert_equal expected4, board.render(true)
   end
+
+  def test_ship_overlaps?
+    board = Board.new
+    cruiser = Ship.new('Cruiser', 3)
+
+    board.place(cruiser, %w[A1 A2 A3])
+
+    assert_equal false, board.ship_overlaps?(%w[B1 B2])
+    assert_equal true, board.ship_overlaps?(%w[A1 B1])
+  end
 end
