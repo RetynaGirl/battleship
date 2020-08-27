@@ -28,4 +28,8 @@ class Board
   def valid_coordinate?(coordinate)
     @cells.key?(coordinate)
   end
+
+  def place(ship, coordinates)
+    coordinates.each { |coord| @cells[coord].place_ship(ship) }
+  end
 end
