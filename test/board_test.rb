@@ -103,5 +103,17 @@ class BoardTest < Minitest::Test
     expected3 = "  1 2 3 4 \nA H . . . \nB . . . M \nC . . . . \nD . . . . \n"
 
     assert_equal expected3, board.render
+
+    # Sunk ship and show ship
+    submarine = Ship.new('Submarine', 2)
+
+    board.place(submarine, %w[C1 D1])
+
+    board.cells['C1'].fire_upon
+    board.cells['D1'].fire_upon
+
+    expected4 = "  1 2 3 4 \nA H S S . \nB . . . M \nC X . . . \nD X . . . \n"
+
+    assert_equal expected4, board.render(true)
   end
 end
