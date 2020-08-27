@@ -24,4 +24,8 @@ class Board
     end
     cells
   end
+
+  def valid_placement?(ship, coordinates)
+    return false unless ship.length == coordinates.length
+  end
 end
