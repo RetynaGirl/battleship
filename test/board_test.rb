@@ -28,7 +28,14 @@ class BoardTest < Minitest::Test
     cruiser = Ship.new('Cruiser', 3)
     submarine = Ship.new('Submarine', 2)
 
+    # Same length
     assert_equal false, board.valid_placement?(cruiser, %w[A1 A2])
     assert_equal false, board.valid_placement?(submarine, %w[A1 A2 A3])
+
+    # Consecutive
+    assert_equal false, board.valid_placement?(cruiser, %w[A1 A2 A4])
+    assert_equal false, board.valid_placement?(submarine, %w[A1 C1])
+    assert_equal false, board.valid_placement?(cruiser, %w[A3 A2 A1])
+    assert_equal false, board.valid_placement?(submarine, %w[C1 B1])
   end
 end
