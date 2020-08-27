@@ -37,5 +37,13 @@ class BoardTest < Minitest::Test
     assert_equal false, board.valid_placement?(submarine, %w[A1 C1])
     assert_equal false, board.valid_placement?(cruiser, %w[A3 A2 A1])
     assert_equal false, board.valid_placement?(submarine, %w[C1 B1])
+
+    # Not diagonal
+    assert_equal false, board.valid_placement?(cruiser, %w[A1 B2 C3])
+    assert_equal false, board.valid_placement?(submarine, %w[C2 D3])
+
+    # Should work
+    assert board.valid_placement?(submarine, %w[A1 A2])
+    assert board.valid_placement?(cruiser, %w[B1 C1 D1])
   end
 end
