@@ -22,4 +22,13 @@ class BoardTest < Minitest::Test
       assert_instance_of Cell, cell
     end
   end
+
+  def test_coordinate_valid
+    board = Board.new
+
+    assert_equal true, board.valid_coordinate?('A1')
+    assert_equal true, board.valid_coordinate?('D4')
+    assert_equal false, board.valid_coordinate?('A5')
+    assert_equal false, board.valid_coordinate?('A22')
+  end
 end
