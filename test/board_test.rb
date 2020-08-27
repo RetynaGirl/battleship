@@ -55,4 +55,19 @@ class BoardTest < Minitest::Test
     assert_equal false, board.valid_coordinate?('A5')
     assert_equal false, board.valid_coordinate?('A22')
   end
+
+  def test_it_places_ship
+    board = Board.new
+    cruiser = Ship.new('Cruiser', 3)
+
+    board.place(cruiser, %w[A1 A2 A3])
+    cell1 = board.cells['A1']
+    cell2 = board.cells['A2']
+    cell3 = board.cells['A3']
+
+    assert_equal cruiser, cell1.ship
+    assert_equal cruiser, cell2.ship
+    assert_equal cruiser, cell3.ship
+    assert_equal true, cell3.ship == cell2.ship
+  end
 end
