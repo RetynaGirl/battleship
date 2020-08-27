@@ -47,6 +47,14 @@ class BoardTest < Minitest::Test
     assert board.valid_placement?(cruiser, %w[B1 C1 D1])
   end
 
+  def test_it_returns_direction
+    board = Board.new
+
+    assert_equal :horizontal, board.determine_direction(%w[A1 A2 A3])
+    assert_equal :vertical, board.determine_direction(%w[A1 B1 C1])
+    assert_equal false, board.determine_direction(%w[A1 B2 C3])
+  end
+
   def test_coordinate_valid
     board = Board.new
 
