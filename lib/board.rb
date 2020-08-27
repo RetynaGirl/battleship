@@ -27,9 +27,9 @@ class Board
 
   def valid_placement?(ship, coordinates)
     # return false if ship_overlaps?(coordinates)
-    # coordinates.each do |coord|
-    #   return false unless valid_coordinate?(coord)
-    # end
+    coordinates.each do |coord|
+      return false unless valid_coordinate?(coord)
+    end
 
     return false unless ship.length == coordinates.length
 
@@ -38,9 +38,9 @@ class Board
       first_coords = coordinates[0].split('')
       second_coords = coordinates[1].split('')
 
-      if first_coords[0] == second_coords[0] && !(first_coords[1] == second_coords[1])
+      if first_coords[0] == second_coords[0] && first_coords[1] != second_coords[1]
         direction = :horizontal
-      elsif !(first_coords[0] == second_coords[0]) && first_coords[1] == second_coords[1]
+      elsif first_coords[0] != second_coords[0] && first_coords[1] == second_coords[1]
         direction = :vertical
       else
         return false
@@ -56,9 +56,11 @@ class Board
           return false unless first_coords[1].to_i + idx == split_coords[1].to_i && first_coords[0] == split_coords[0]
         end
       end
-      true
-    else
-      true
     end
+    true
+  end
+
+  def valid_coordinate?(coordinate)
+    @cells.key?(coordinate)
   end
 end
