@@ -16,7 +16,7 @@ class PlayerTest < Minitest::Test
   def test_player_generates_ships
     player = Player.new
 
-    assert_equal 2, player.generate_player_ships.length
+    assert_equal 2, player.ships.length
   end
 
   def test_player_places_ship
@@ -25,9 +25,9 @@ class PlayerTest < Minitest::Test
 
     player1.player_place_ship(ship1, %w[A1 A2 A3])
 
-    actual1 = player1.player.cells['A1'].ship
-    actual2 = player1.player.cells['A1'].ship
-    actual3 = player1.player.cells['A1'].ship
+    actual1 = player1.board.cells['A1'].ship
+    actual2 = player1.board.cells['A2'].ship
+    actual3 = player1.board.cells['A3'].ship
 
     assert_equal ship1, actual1
     assert_equal ship1, actual2
