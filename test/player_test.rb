@@ -33,4 +33,13 @@ class PlayerTest < Minitest::Test
     assert_equal ship1, actual2
     assert_equal ship1, actual3
   end
+
+  def test_valid_sequence?
+    player1 = Player.new
+    ship1 = Ship.new('Cruiser', 3)
+    ship2 = Ship.new('Cruiser', 3)
+
+    assert_equal true, player1.valid_sequence?(ship1, %w[A1 A2 A3])
+    assert_equal false, player1.valid_sequence?(ship2, %w[A3 A1 A2])
+  end
 end
