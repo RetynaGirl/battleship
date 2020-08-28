@@ -30,4 +30,13 @@ class Player
       @player.cells[coord].place_ship(ship)
     end
   end
+
+  def valid_sequence?(ship, coords)
+    valid = false
+    coords.sort
+    coords.each do |coord|
+      valid = @player.cells.include?(coord) && @player.valid_placement?(ship, coords)
+    end
+    valid
+  end
 end
