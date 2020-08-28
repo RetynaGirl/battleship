@@ -6,37 +6,27 @@ require './lib/board'
 
 # Displays player board
 class Player
-  attr_reader :player, :ship
+  attr_reader :board, :ships
 
-  def initialize
-    @player = Board.new
-    @ship_names = {
-      2 => 'Submarine',
-      3 => 'Cruiser'
-    }
+  def initialize(ship_names = { 2 => 'Submarine', 3 => 'Cruiser'})
+    @board = Board.new
+    @ships = generate_player_ships(ship_names)
   end
 
-  def generate_player_ships
+  def generate_player_ships(ship_names)
     ships = []
 
-    @ship_names.each do |length, name|
+    ship_names.each do |length, name|
       ships << Ship.new(name, length)
     end
     ships
   end
 
   def player_place_ship(ship, coords)
-    coords.each do |coord|
-      @player.cells[coord].place_ship(ship)
-    end
+    @board.place(ship, coords)
   end
 
   def valid_sequence?(ship, coords)
-    valid = false
-    coords.sort
-    coords.each do |coord|
-      valid = @player.cells.include?(coord) && @player.valid_placement?(ship, coords)
-    end
-    valid
+    @board.valid_placement?(ship, coords)
   end
 end
