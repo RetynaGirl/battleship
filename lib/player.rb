@@ -24,4 +24,10 @@ class Player
     end
     ships
   end
+
+  def player_place_ship(ship, coords)
+    coords.each do |coord|
+      @player.cells[coord].place_ship(ship)
+    end
+  end
 end
