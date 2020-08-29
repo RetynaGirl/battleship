@@ -8,8 +8,8 @@ require './lib/board'
 class Player
   attr_reader :board, :ships
 
-  def initialize(ship_names = { 'Submarine' => 2, 'Cruiser' => 3 })
-    @board = Board.new
+  def initialize(ship_names: { 'Submarine' => 2, 'Cruiser' => 3 }, board_size: 4)
+    @board = Board.new(board_size)
     @ships = generate_player_ships(ship_names)
   end
 
