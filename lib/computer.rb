@@ -45,4 +45,11 @@ class Computer
       end
     end
   end
+
+  def lost?
+    @ships.each do |ship|
+      return true if ship.sunk?
+    end
+    false
+  end
 end
