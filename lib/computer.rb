@@ -5,7 +5,8 @@ require './lib/board'
 
 # Holds data and helpful methods for the Computer player
 class Computer
-  attr_reader :ships
+  attr_reader :board
+  attr_accessor :ships # Accessor for test only
 
   def initialize(ship_names = { 'Submarine' => 2, 'Cruiser' => 3 })
     @board = Board.new
@@ -20,10 +21,15 @@ class Computer
 
   def place_ships
     @ships.each do |ship|
-      direction = %i[horizontal vertical].sample
-      coord = @board.cells.keys.sample
+      ship_placed = false
+      until ship_placed
+        direction = %i[horizontal vertical].sample
+        coord = @board.cells.keys.sample
 
-      coordinates = generate_coords(ship, direction, coord)
+        coordinates = generate_coords(ship, direction, coord)
+
+        ship_placed = @board.place(ship, coordinates)
+      end
     end
   end
 
