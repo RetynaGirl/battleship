@@ -143,4 +143,11 @@ class BoardTest < Minitest::Test
     assert_equal false, board.ship_overlaps?(%w[B1 B2])
     assert_equal true, board.ship_overlaps?(%w[A1 B1])
   end
+
+  def test_it_places_long_ship
+    board = Board.new(16)
+    carrier = Ship.new('Carrier', 7)
+
+    board.place(carrier, %w[B5 B6 B7 B8 B9 B10 B11])
+  end
 end
