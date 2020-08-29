@@ -50,4 +50,22 @@ class ComputerTest < Minitest::Test
     assert computer.board.cells.values.map { |cell| cell.ship }.include?(ship1)
     assert computer.board.cells.values.map { |cell| cell.ship }.include?(ship2)
   end
+
+  def test_lost
+    computer = Computer.new
+
+    assert_equal false, computer.lost?
+
+    computer.ships[0].hit
+    computer.ships[0].hit
+    computer.ships[0].hit
+
+    assert_equal false, computer.lost?
+
+    computer.ships[1].hit
+    computer.ships[1].hit
+    computer.ships[1].hit
+
+    assert computer.lost?
+  end
 end
