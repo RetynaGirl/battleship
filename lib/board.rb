@@ -43,10 +43,10 @@ class Board
   end
 
   def validate_direction(coordinates, direction)
-    first_coords = coordinates[0].split('')
+    first_coords = [coordinates[0][0], coordinates[0][1..-1]]
 
     coordinates.each_with_index do |coords, idx|
-      split_coords = coords.split('')
+      split_coords = [coords[0], coords[1..-1]]
 
       case direction
       when :vertical
@@ -59,8 +59,8 @@ class Board
   end
 
   def determine_direction(coordinates)
-    first_coords = coordinates[0].split('')
-    second_coords = coordinates[1].split('')
+    first_coords = [coordinates[0][0], coordinates[0][1..-1]]
+    second_coords = [coordinates[1][0], coordinates[1][1..-1]]
 
     if first_coords[0] == second_coords[0] && first_coords[1] != second_coords[1]
       :horizontal
