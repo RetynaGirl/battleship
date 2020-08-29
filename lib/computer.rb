@@ -34,7 +34,7 @@ class Computer
   end
 
   def generate_coords(ship, direction, coord)
-    coord_data = coord.split('')
+    coord_data = [coord[0], coord[1..-1]]
 
     (1..ship.length).map do |num|
       case direction
