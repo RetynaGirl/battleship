@@ -28,5 +28,26 @@ class ComputerTest < Minitest::Test
     ship2 = Ship.new('Cruiser', 3)
 
     assert_equal %w[A1 A2 A3], computer.generate_coords(ship2, :horizontal, 'A1')
+    assert_equal %w[A1 B1], computer.generate_coords(ship1, :vertical, 'A1')
+  end
+
+  def test_place_ships
+    ship1 = Ship.new('Submarine', 2)
+    ship2 = Ship.new('Cruiser', 3)
+    computer = Computer.new
+
+    computer.ships = [ship1, ship2]
+
+    computer.place_ships
+
+    cells_with_ship = 0
+    computer.board.cells.values.each do |cell|
+      cells_with_ship += 1 unless cell.empty?
+    end
+
+    assert_equal 5, cells_with_ship
+
+    assert computer.board.cells.values.map { |cell| cell.ship }.include?(ship1)
+    assert computer.board.cells.values.map { |cell| cell.ship }.include?(ship2)
   end
 end
