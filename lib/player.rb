@@ -8,18 +8,15 @@ require './lib/board'
 class Player
   attr_reader :board, :ships
 
-  def initialize(ship_names = { 2 => 'Submarine', 3 => 'Cruiser'})
+  def initialize(ship_names = { 'Submarine' => 2, 'Cruiser' => 3 })
     @board = Board.new
     @ships = generate_player_ships(ship_names)
   end
 
   def generate_player_ships(ship_names)
-    ships = []
-
-    ship_names.each do |length, name|
-      ships << Ship.new(name, length)
+    ship_names.map do |name, length|
+      Ship.new(name, length)
     end
-    ships
   end
 
   def player_place_ship(ship, coords)
@@ -28,5 +25,9 @@ class Player
 
   def valid_sequence?(ship, coords)
     @board.valid_placement?(ship, coords)
+  end
+
+  def lost?
+    @ships.all?(&:sunk?)
   end
 end
