@@ -58,7 +58,6 @@ class ComputerTest < Minitest::Test
 
     computer.ships[0].hit
     computer.ships[0].hit
-    computer.ships[0].hit
 
     assert_equal false, computer.lost?
 
