@@ -11,25 +11,25 @@ class Turn
   end
 
   def display_boards
-    p '=============COMPUTER BOARD============='
-    @computer.board.render
-    p '==============PLAYER BOARD=============='
-    @player.board.render(true)
+    puts '=============COMPUTER BOARD============='
+    puts @computer.board.render
+    puts '==============PLAYER BOARD=============='
+    puts @player.board.render(true)
   end
 
   def player_shot_prompt
-    p 'Enter the coordinate for your shot:'
+    print "Enter the coordinate for your shot:\n> "
     coordinate = gets.chomp.upcase
 
     while @player.shots.include?(coordinate) || !@computer.board.valid_coordinate?(coordinate)
 
       until @computer.board.valid_coordinate?(coordinate)
-        p 'Please enter a valid coordinate:'
+        print "Please enter a valid coordinate:\n> "
         coordinate = gets.chomp.upcase
       end
 
       while @player.shots.include?(coordinate)
-        p 'You already fired at this position.'
+        print "You already fired at this position. Please choose a new coordinate:\n> "
         coordinate = gets.chomp.upcase
       end
     end
@@ -54,19 +54,19 @@ class Turn
 
   def print_results
     if @computer.board.cells[@player_shot].empty?
-      p "Your shot on #{@player_shot} was a miss."
+      puts "Your shot on #{@player_shot} was a miss."
     elsif @computer.board.cells[@player_shot].ship.sunk?
-      p "Your shot on #{@player_shot} was a hit and sunk my #{@computer.board.cells[@player_shot].ship.name}."
+      puts "Your shot on #{@player_shot} was a hit and sunk my #{@computer.board.cells[@player_shot].ship.name}."
     else
-      p "Your shot on #{@player_shot} was a hit."
+      puts "Your shot on #{@player_shot} was a hit."
     end
 
     if @player.board.cells[@computer_shot].empty?
-      p "My shot on #{@computer_shot} was a miss."
+      puts "My shot on #{@computer_shot} was a miss."
     elsif @player.board.cells[@computer_shot].ship.sunk?
-      p "My shot on #{@computer_shot} was a hit and sunk your #{@player.board.cells[@computer_shot].ship.name}."
+      puts "My shot on #{@computer_shot} was a hit and sunk your #{@player.board.cells[@computer_shot].ship.name}."
     else
-      p "My shot on #{@computer_shot} was a hit."
+      puts "My shot on #{@computer_shot} was a hit."
     end
   end
 end

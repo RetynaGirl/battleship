@@ -104,8 +104,8 @@ class BoardTest < Minitest::Test
 
     board.place(cruiser, %w[A1 A2 A3])
 
-    expected1 = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
-    expected2 = "  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n"
+    expected1 = "  1  2  3  4  \nA .  .  .  .  \nB .  .  .  .  \nC .  .  .  .  \nD .  .  .  .  \n"
+    expected2 = "  1  2  3  4  \nA S  S  S  .  \nB .  .  .  .  \nC .  .  .  .  \nD .  .  .  .  \n"
 
     # No ships
     assert_equal expected1, board.render
@@ -117,7 +117,7 @@ class BoardTest < Minitest::Test
     board.cells['B4'].fire_upon
     board.cells['A1'].fire_upon
 
-    expected3 = "  1 2 3 4 \nA H . . . \nB . . . M \nC . . . . \nD . . . . \n"
+    expected3 = "  1  2  3  4  \nA H  .  .  .  \nB .  .  .  M  \nC .  .  .  .  \nD .  .  .  .  \n"
 
     assert_equal expected3, board.render
 
@@ -129,7 +129,7 @@ class BoardTest < Minitest::Test
     board.cells['C1'].fire_upon
     board.cells['D1'].fire_upon
 
-    expected4 = "  1 2 3 4 \nA H S S . \nB . . . M \nC X . . . \nD X . . . \n"
+    expected4 = "  1  2  3  4  \nA H  S  S  .  \nB .  .  .  M  \nC X  .  .  .  \nD X  .  .  .  \n"
 
     assert_equal expected4, board.render(true)
   end

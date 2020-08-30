@@ -71,8 +71,8 @@ class ComputerTest < Minitest::Test
   def test_shot_position
     computer = Computer.new
 
-    assert computer.board.cells.keys.include?(computer.get_shot_position)
-    assert computer.board.cells.keys.include?(computer.get_shot_position)
-    assert computer.board.cells.keys.include?(computer.get_shot_position)
+    assert computer.board.cells.keys.include?(computer.shot_position)
+    assert computer.board.cells.keys.include?(computer.shot_position)
+    assert computer.board.cells.keys.include?(computer.shot_position)
   end
 end
