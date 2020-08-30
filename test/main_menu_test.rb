@@ -3,8 +3,9 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/game'
+require './lib/main_menu'
 
-class MainMenu < Minitest::Test
+class MainMenuTest < Minitest::Test
   def test_it_exists
     menu = MainMenu.new
 
