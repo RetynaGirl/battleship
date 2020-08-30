@@ -6,11 +6,12 @@ require './lib/board'
 
 # Displays player board
 class Player
-  attr_reader :board, :ships
+  attr_reader :board, :ships, :shots
 
   def initialize(ship_names: { 'Submarine' => 2, 'Cruiser' => 3 }, board_size: 4)
     @board = Board.new(board_size)
     @ships = generate_player_ships(ship_names)
+    @shots = []
   end
 
   def generate_player_ships(ship_names)
