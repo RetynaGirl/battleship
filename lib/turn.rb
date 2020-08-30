@@ -49,4 +49,22 @@ class Turn
     @computer.shots << coordinate
     @player.board.cells[coordinate].fire_upon
   end
+
+  def print_results
+    if @computer.board.cells[@player_shot].empty?
+      p "Your shot on #{@player_shot} was a miss."
+    elsif @computer.board.cells[@player_shot].ship.sunk?
+      p "Your shot on #{@player_shot} was a hit and sunk my #{@computer.board.cells[@player_shot].ship.name}."
+    else
+      p "Your shot on #{@player_shot} was a hit."
+    end
+
+    if @player.board.cells[@computer_shot].empty?
+      p "My shot on #{@computer_shot} was a miss."
+    elsif @player.board.cells[@computer_shot].ship.sunk?
+      p "My shot on #{@computer_shot} was a hit and sunk your #{@player.board.cells[@computer_shot].ship.name}."
+    else
+      p "My shot on #{@computer_shot} was a hit."
+    end
+  end
 end
