@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require './lib/player'
+require './lib/computer'
+require './lib/turn'
+
 # Runs the game with a player and a computer
 class Game
   def initialize
@@ -15,11 +19,11 @@ class Game
   end
 
   def game_setup
-    p 'Do you want to play with a custom board and custom ships? (y/n)'
+    print "Do you want to play with a custom board and custom ships? (y/n)\n> "
     input = gets.chomp.upcase
 
     until %w[Y N].include?(input)
-      p 'Please enter a valid input:'
+      print "Please enter a valid input:\n> "
       input = gets.chomp.upcase
     end
 
@@ -33,47 +37,55 @@ class Game
   end
 
   def player_place_ships
-    p 'I have laid out my ships on the grid.'
-    p "You now need to lay out your #{@ships.length} ships"
-    p "The #{@ships.map.with_index do |ship, idx|
-               "#{ship[0]} is #{ship[1]} units long#{', and the ' if @ships.length > (idx + 1)}"
-             end.join}."
+    puts 'I have laid out my ships on the grid.'
+    puts "You now need to lay out your #{@ships.length} ships"
+    puts "The #{@ships.map.with_index do |ship, idx|
+                  "#{ship[0]} is #{ship[1]} units long#{', and the ' if @ships.length > (idx + 1)}"
+                end.join}."
 
     @player.ships.each do |ship|
-      p @player.board.render(true)
-      p "Enter the squares for the #{ship.name} (#{ship.length} spaces):\n> "
+      puts @player.board.render(true)
+      print "Enter the squares for the #{ship.name} (#{ship.length} spaces):\n> "
       coordinates = gets.chomp.upcase.split(' ')
-      until @player.place_ship(coordinates)
-        p "Those are invalid coordinates. Please try again:\n> "
+      until @player.place_ship(ship, coordinates)
+        print "Those are invalid coordinates. Please try again:\n> "
         coordinates = gets.chomp.upcase.split(' ')
       end
     end
   end
 
   def custom_game_init
-    p "What board size would you like to use?\n> "
+    print "What board size would you like to use?\n> "
     @board_size = gets.chomp.to_i
 
+    puts 'You may now create a new ship.'
     @ships.clear
     loop do
-      p "What should this ship be called?\n> "
+      print "What should this ship be called?\n> "
       ship_name = gets.chomp.capitalize
 
-      p "How long should the #{ship_name} be?\n> "
+      print "How long should the #{ship_name} be?\n> "
       ship_length = gets.chomp.to_i
 
-      until ship_length.positive?
-        p 'Please enter a valid size:'
-        ship_length = gets.chomp.to_i
+      until ship_length.positive? && ship_length <= @board_size
+        until ship_length.positive?
+          print "Please enter a valid size:\n> "
+          ship_length = gets.chomp.to_i
+        end
+
+        until ship_length <= @board_size
+          print "Ship length too large. Please enter a valid size:\n> "
+          ship_length = gets.chomp.to_i
+        end
       end
 
       @ships[ship_name] = ship_length
 
-      p "Do you want to add another ship? (y/n)\n> "
+      print "Do you want to add another ship? (y/n)\n> "
       input = gets.chomp.upcase
 
       until %w[Y N].include?(input)
-        p 'Please enter a valid input:'
+        print "Please enter a valid input:\n> "
         input = gets.chomp.upcase
       end
 
@@ -100,11 +112,11 @@ class Game
 
   def display_winner
     if @player.lost? && @computer.lost?
-      p 'Wow! We tied!'
+      puts 'Wow! We tied!'
     elsif @player.lost?
-      p 'I won!'
+      puts 'I won!'
     else
-      p 'You won!'
+      puts 'You won!'
     end
   end
 end

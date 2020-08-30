@@ -6,11 +6,11 @@ require './lib/game'
 class MainMenu
   def run
     loop do
-      p "Welcome to BATTLESHIP\nEnter p to play. Enter q to quit.\n> "
+      print "Welcome to BATTLESHIP\nEnter p to play. Enter q to quit.\n> "
       input = gets.chomp.upcase
 
       until %w[P Q].include?(input)
-        p 'Please enter a valid input:'
+        print "Please enter a valid input:\n> "
         input = gets.chomp.upcase
       end
       if input == 'P'
@@ -19,6 +19,6 @@ class MainMenu
         break
       end
     end
-    p 'Goodbye!'
+    puts 'Goodbye!'
   end
 end

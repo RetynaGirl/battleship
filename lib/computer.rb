@@ -5,7 +5,7 @@ require './lib/board'
 
 # Holds data and helpful methods for the Computer player
 class Computer
-  attr_reader :board
+  attr_reader :board, :shots
   attr_accessor :ships # Accessor for test only
 
   def initialize(ship_names = { 'Submarine' => 2, 'Cruiser' => 3 }, board_size = 4)

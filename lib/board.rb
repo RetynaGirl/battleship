@@ -99,6 +99,7 @@ class Board
 
     numbers.each do |num|
       out_string += "#{num} "
+      out_string += ' ' if num < 10
     end
     out_string += "\n"
 
@@ -106,9 +107,8 @@ class Board
       out_string += letter
 
       numbers.each do |num|
-        out_string += " #{@cells[letter + num.to_s].render(show_ships)}"
+        out_string += " #{@cells[letter + num.to_s].render(show_ships)} "
       end
-
       out_string += " \n"
     end
     out_string
