@@ -29,6 +29,8 @@ class Game
 
     @computer.place_ships
     player_place_ships
+
+    game_loop
   end
 
   def player_place_ships
@@ -68,7 +70,7 @@ class Game
 
       @ships[ship_name] = ship_length
 
-      p "Do you want to add another ship?\n> "
+      p "Do you want to add another ship? (y/n)\n> "
       input = gets.chomp.upcase
 
       until %w[Y N].include?(input)
@@ -78,5 +80,22 @@ class Game
 
       break if input == 'N'
     end
+  end
+
+  def game_loop
+    loop do
+      turn = Turn.new(@player, @computer)
+
+      turn.display_boards
+
+      turn.player_shoot
+      turn.computer_shoot
+
+      turn.print_results
+
+      break if @player.lost? || @computer.lost?
+    end
+
+    display_winner
   end
 end
