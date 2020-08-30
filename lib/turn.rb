@@ -11,8 +11,10 @@ class Turn
   end
 
   def display_boards
-    @player.board.render(true)
+    p '=============COMPUTER BOARD============='
     @computer.board.render
+    p '==============PLAYER BOARD=============='
+    @player.board.render(true)
   end
 
   def player_shot_prompt

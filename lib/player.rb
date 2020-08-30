@@ -8,19 +8,19 @@ require './lib/board'
 class Player
   attr_reader :board, :ships, :shots
 
-  def initialize(ship_names: { 'Submarine' => 2, 'Cruiser' => 3 }, board_size: 4)
+  def initialize(ship_names = { 'Submarine' => 2, 'Cruiser' => 3 }, board_size = 4)
     @board = Board.new(board_size)
-    @ships = generate_player_ships(ship_names)
+    @ships = generate_ships(ship_names)
     @shots = []
   end
 
-  def generate_player_ships(ship_names)
+  def generate_ships(ship_names)
     ship_names.map do |name, length|
       Ship.new(name, length)
     end
   end
 
-  def player_place_ship(ship, coords)
+  def place_ship(ship, coords)
     @board.place(ship, coords)
   end
 
