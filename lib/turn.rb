@@ -6,6 +6,8 @@ class Turn
   def initialize(player, computer)
     @player = player
     @computer = computer
+    @computer_shot = nil
+    @player_shot = nil
   end
 
   def display_boards
@@ -17,15 +19,24 @@ class Turn
     p 'Enter the coordinate for your shot:'
     coordinate = gets.chomp.upcase
 
-    until @computer.board.valid_coordinate?(coordinate)
-      p 'Please enter a valid coordinate:'
-      coordinate = gets.chomp.upcase
+    while @player.shots.include?(coordinate) || !@computer.board.valid_coordinate?(coordinate)
+
+      until @computer.board.valid_coordinate?(coordinate)
+        p 'Please enter a valid coordinate:'
+        coordinate = gets.chomp.upcase
+      end
+
+      while @player.shots.include?(coordinate)
+        p 'You already fired at this position.'
+        coordinate = gets.chomp.upcase
+      end
     end
     coordinate
   end
 
   def player_shoot
     coordinate = player_shot_prompt
+    @player_shot = coordinate
 
     @player.shots << coordinate
     @computer.board.cells[coordinate].fire_upon
@@ -33,6 +44,7 @@ class Turn
 
   def computer_shoot
     coordinate = @computer.shot_position
+    @computer_shot = coordinate
 
     @computer.shots << coordinate
     @player.board.cells[coordinate].fire_upon
