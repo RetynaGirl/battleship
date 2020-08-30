@@ -24,8 +24,8 @@ class Game
 
     custom_game_init if input == 'Y'
 
-    @player = Player.new(ships, board_size)
-    @computer = Computer.new(ships, board_size)
+    @player = Player.new(@ships, @board_size)
+    @computer = Computer.new(@ships, @board_size)
 
     @computer.place_ships
     player_place_ships
@@ -46,6 +46,37 @@ class Game
         p "Those are invalid coordinates. Please try again:\n> "
         coordinates = gets.chomp.upcase.split(' ')
       end
+    end
+  end
+
+  def custom_game_init
+    p "What board size would you like to use?\n> "
+    @board_size = gets.chomp.to_i
+
+    @ships.clear
+    loop do
+      p "What should this ship be called?\n> "
+      ship_name = gets.chomp.capitalize
+
+      p "How long should the #{ship_name} be?\n> "
+      ship_length = gets.chomp.to_i
+
+      until ship_length > 0
+        p 'Please enter a valid size:'
+        ship_length = gets.chomp.to_i
+      end
+
+      @ships[ship_name] = ship_length
+
+      p "Do you want to add another ship?\n> "
+      input = gets.chomp.upcase
+
+      until %w[Y N].include?(input)
+        p 'Please enter a valid input:'
+        input = gets.chomp.upcase
+      end
+
+      break if input == 'N'
     end
   end
 end
