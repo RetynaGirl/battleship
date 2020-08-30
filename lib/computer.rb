@@ -12,6 +12,7 @@ class Computer
     @board = Board.new(board_size)
     @ships = generate_ships(ship_names)
     @possible_shots = board.cells.keys
+    @shots = []
   end
 
   def generate_ships(ship_names)
@@ -51,7 +52,7 @@ class Computer
     @ships.all?(&:sunk?)
   end
 
-  def get_shot_position
+  def shot_position
     @possible_shots.shuffle!.pop
   end
 end

@@ -47,8 +47,8 @@ class ComputerTest < Minitest::Test
 
     assert_equal 5, cells_with_ship
 
-    assert computer.board.cells.values.map { |cell| cell.ship }.include?(ship1)
-    assert computer.board.cells.values.map { |cell| cell.ship }.include?(ship2)
+    assert computer.board.cells.values.map(&:ship).include?(ship1)
+    assert computer.board.cells.values.map(&:ship).include?(ship2)
   end
 
   def test_lost
