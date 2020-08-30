@@ -11,6 +11,7 @@ class Game
 
   def play_game
     game_setup
+    game_loop
   end
 
   def game_setup
@@ -29,8 +30,6 @@ class Game
 
     @computer.place_ships
     player_place_ships
-
-    game_loop
   end
 
   def player_place_ships
