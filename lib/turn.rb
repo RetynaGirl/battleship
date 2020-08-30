@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 # Turn class
 class Turn
   attr_reader :player, :computer
@@ -33,7 +32,7 @@ class Turn
   end
 
   def computer_shoot
-    coordinate = @computer.get_shot_position
+    coordinate = @computer.shot_position
 
     @computer.shots << coordinate
     @player.board.cells[coordinate].fire_upon
