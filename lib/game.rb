@@ -98,4 +98,14 @@ class Game
 
     display_winner
   end
+
+  def display_winner
+    if @player.lost? && @computer.lost?
+      p 'Wow! We tied!'
+    elsif @player.lost?
+      p 'I won!'
+    else
+      p 'You won!'
+    end
+  end
 end
