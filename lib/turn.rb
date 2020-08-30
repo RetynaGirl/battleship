@@ -18,10 +18,24 @@ class Turn
     p 'Enter the coordinate for your shot:'
     coordinate = gets.chomp.upcase
 
-    until @player.board.valid_coordinate?(coordinate)
+    until @computer.board.valid_coordinate?(coordinate)
       p 'Please enter a valid coordinate:'
       coordinate = gets.chomp.upcase
     end
     coordinate
+  end
+
+  def player_shoot
+    coordinate = player_shot_prompt
+
+    @player.shots << coordinate
+    @computer.board.cells[coordinate].fire_upon
+  end
+
+  def computer_shoot
+    coordinate = @computer.get_shot_position
+
+    @computer.shots << coordinate
+    @player.board.cells[coordinate].fire_upon
   end
 end
