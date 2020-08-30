@@ -63,7 +63,7 @@ class Game
       p "How long should the #{ship_name} be?\n> "
       ship_length = gets.chomp.to_i
 
-      until ship_length > 0
+      until ship_length.positive?
         p 'Please enter a valid size:'
         ship_length = gets.chomp.to_i
       end
