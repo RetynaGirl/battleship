@@ -8,7 +8,7 @@ class Computer
   attr_reader :board
   attr_accessor :ships # Accessor for test only
 
-  def initialize(ship_names = { 'Submarine' => 2, 'Cruiser' => 3 }, board_size = 4)
+  def initialize(ship_names: { 'Submarine' => 2, 'Cruiser' => 3 }, board_size: 4)
     @board = Board.new(board_size)
     @ships = generate_ships(ship_names)
     @possible_shots = board.cells.keys
