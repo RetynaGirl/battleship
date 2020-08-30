@@ -11,6 +11,7 @@ class Computer
   def initialize(ship_names: { 'Submarine' => 2, 'Cruiser' => 3 }, board_size: 4)
     @board = Board.new(board_size)
     @ships = generate_ships(ship_names)
+    @possible_shots = board.cells.keys
   end
 
   def generate_ships(ship_names)
@@ -48,5 +49,9 @@ class Computer
 
   def lost?
     @ships.all?(&:sunk?)
+  end
+
+  def get_shot_position
+    @possible_shots.shuffle!.pop
   end
 end
