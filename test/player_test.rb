@@ -5,7 +5,6 @@ require 'minitest/pride'
 require './lib/board'
 require './lib/player'
 
-
 class PlayerTest < Minitest::Test
   def test_it_exists
     player = Player.new
@@ -23,7 +22,7 @@ class PlayerTest < Minitest::Test
     player = Player.new
     ship1 = Ship.new('Cruiser', 3)
 
-    player.player_place_ship(ship1, %w[A1 A2 A3])
+    player.place_ship(ship1, %w[A1 A2 A3])
 
     actual1 = player.board.cells['A1'].ship
     actual2 = player.board.cells['A2'].ship
