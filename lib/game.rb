@@ -29,6 +29,8 @@ class Game
 
     @computer.place_ships
     player_place_ships
+
+    game_loop
   end
 
   def player_place_ships
@@ -61,14 +63,14 @@ class Game
       p "How long should the #{ship_name} be?\n> "
       ship_length = gets.chomp.to_i
 
-      until ship_length > 0
+      until ship_length.positive?
         p 'Please enter a valid size:'
         ship_length = gets.chomp.to_i
       end
 
       @ships[ship_name] = ship_length
 
-      p "Do you want to add another ship?\n> "
+      p "Do you want to add another ship? (y/n)\n> "
       input = gets.chomp.upcase
 
       until %w[Y N].include?(input)
@@ -77,6 +79,33 @@ class Game
       end
 
       break if input == 'N'
+    end
+  end
+
+  def game_loop
+    loop do
+      turn = Turn.new(@player, @computer)
+
+      turn.display_boards
+
+      turn.player_shoot
+      turn.computer_shoot
+
+      turn.print_results
+
+      break if @player.lost? || @computer.lost?
+    end
+
+    display_winner
+  end
+
+  def display_winner
+    if @player.lost? && @computer.lost?
+      p 'Wow! We tied!'
+    elsif @player.lost?
+      p 'I won!'
+    else
+      p 'You won!'
     end
   end
 end
