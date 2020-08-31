@@ -56,7 +56,14 @@ class Game
 
   def custom_game_init
     print "What board size would you like to use?\n> "
-    @board_size = gets.chomp.to_i
+    board_size = gets.chomp.to_i
+
+    until board_size.positive?
+      print "Please enter a valid size:\n> "
+      board_size = gets.chomp.to_i
+    end
+
+    @board_size = board_size
 
     puts 'You may now create a new ship.'
     @ships.clear
