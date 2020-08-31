@@ -40,7 +40,11 @@ class Game
     puts 'I have laid out my ships on the grid.'
     puts "You now need to lay out your #{@ships.length} ships"
     puts "The #{@ships.map.with_index do |ship, idx|
-                  "#{ship[0]} is #{ship[1]} units long#{', and the ' if @ships.length > (idx + 1)}"
+                  "#{ship[0]} is #{ship[1]} units long#{
+                    ', the ' if @ships.length > (idx + 2)
+                  }#{
+                    ', and the ' if @ships.length == (idx + 2)
+                  }"
                 end.join}."
 
     @player.ships.each do |ship|
@@ -56,7 +60,14 @@ class Game
 
   def custom_game_init
     print "What board size would you like to use?\n> "
-    @board_size = gets.chomp.to_i
+    board_size = gets.chomp.to_i
+
+    until board_size.positive?
+      print "Please enter a valid size:\n> "
+      board_size = gets.chomp.to_i
+    end
+
+    @board_size = board_size
 
     puts 'You may now create a new ship.'
     @ships.clear
