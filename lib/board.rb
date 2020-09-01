@@ -84,11 +84,9 @@ class Board
   end
 
   def ship_overlaps?(coordinates)
-    coordinates.each do |coord|
-      return true unless @cells[coord].empty?
+    !coordinates.all? do |coord|
+      @cells[coord].empty?
     end
-
-    false
   end
 
   def render(show_ships = false)
