@@ -5,34 +5,14 @@ require './lib/board'
 
 # Holds data and helpful methods for the Computer player
 class Computer
-  attr_reader :board, :shots
-  attr_accessor :ships # Accessor for test only
+  attr_reader :shots
+  attr_accessor :board, :ships # Accessor for test only
 
-  def initialize(ship_names = { 'Submarine' => 2, 'Cruiser' => 3 }, board_size = 4)
-    @board = Board.new(board_size)
-    @ships = generate_ships(ship_names)
-    @possible_shots = board.cells.keys
-    @shots = []
-  end
+  def place_ship(ship, board)
+    direction = %i[horizontal vertical].sample
+    coord = board.cells.keys.sample
 
-  def generate_ships(ship_names)
-    ship_names.map do |name, length|
-      Ship.new(name, length)
-    end
-  end
-
-  def place_ships
-    @ships.each do |ship|
-      ship_placed = false
-      until ship_placed
-        direction = %i[horizontal vertical].sample
-        coord = @board.cells.keys.sample
-
-        coordinates = generate_coords(ship, direction, coord)
-
-        ship_placed = @board.place(ship, coordinates)
-      end
-    end
+    generate_coords(ship, direction, coord)
   end
 
   def generate_coords(ship, direction, coord)
@@ -48,11 +28,9 @@ class Computer
     end
   end
 
-  def lost?
-    @ships.all?(&:sunk?)
-  end
-
-  def shot_position
-    @possible_shots.shuffle!.pop
+  def shot_position(other_board, completed_shots)
+    coord = other_board.cells.keys.sample
+    coord = other_board.cells.keys.sample while completed_shots.include?(coord)
+    coord
   end
 end
