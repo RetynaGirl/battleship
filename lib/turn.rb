@@ -17,39 +17,20 @@ class Turn
     puts @player.board.render(true)
   end
 
-  def player_shot_prompt
-    print "Enter the coordinate for your shot:\n> "
-    coordinate = gets.chomp.upcase
-
-    while @player.shots.include?(coordinate) || !@computer.board.valid_coordinate?(coordinate)
-
-      until @computer.board.valid_coordinate?(coordinate)
-        print "Please enter a valid coordinate:\n> "
-        coordinate = gets.chomp.upcase
-      end
-
-      while @player.shots.include?(coordinate)
-        print "You already fired at this position. Please choose a new coordinate:\n> "
-        coordinate = gets.chomp.upcase
-      end
-    end
-    coordinate
-  end
-
   def player_shoot
-    coordinate = player_shot_prompt
+    coordinate = @player.shot_coordinate(@computer.board)
     @player_shot = coordinate
 
     @player.shots << coordinate
-    @computer.board.cells[coordinate].fire_upon
+    @computer.fire_upon(coordinate)
   end
 
   def computer_shoot
-    coordinate = @computer.shot_position
+    coordinate = @computer.shot_coordinate(@player.board)
     @computer_shot = coordinate
 
     @computer.shots << coordinate
-    @player.board.cells[coordinate].fire_upon
+    @player.fire_upon(coordinate)
   end
 
   def print_results
