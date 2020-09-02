@@ -6,11 +6,12 @@ require './lib/board'
 
 # Displays player board
 class Player
-  attr_reader :board, :ships, :shots
+  attr_reader :board, :ships, :shots, :interface
 
-  def initialize(ship_names = { 'Submarine' => 2, 'Cruiser' => 3 }, board_size = 4)
+  def initialize(ship_names, board_size, interface)
     @board = Board.new(board_size)
     @ships = generate_ships(ship_names)
+    @interface = interface
     @shots = []
   end
 
@@ -24,11 +25,21 @@ class Player
     @board.place(ship, coords)
   end
 
-  def valid_sequence?(ship, coords)
-    @board.valid_placement?(ship, coords)
+  def ship_placement_coords
+    @interface.place_ship(@ship, @board)
   end
 
   def lost?
     @ships.all?(&:sunk?)
+  end
+
+  def shot_coordinate(other_board)
+    coord = interface.shot_position(other_board, @shots)
+    @shots << coord
+    coord
+  end
+
+  def fire_upon(coord)
+    @board.cells[coord].fire_upon
   end
 end
